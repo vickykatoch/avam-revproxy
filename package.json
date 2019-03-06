@@ -1,0 +1,25 @@
+{
+  "name": "avam-revproxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vickykatoch/avam-revproxy.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vickykatoch/avam-revproxy/issues"
+  },
+  "homepage": "https://github.com/vickykatoch/avam-revproxy#readme",
+  "dependencies": {
+    "express": "^4.16.4",
+    "http-proxy-middleware": "^0.19.1",
+    "winston": "^3.2.1"
+  }
+}
