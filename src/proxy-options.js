@@ -8,7 +8,7 @@ const onRequestReceived = (proxyReq, req, res) => {
     log('Request Received');
 };
 const onResponse = (proxyRes, req, res) => {
-    proxyRes.headers['x-poweredby'] = 'BK'; 
+    proxyRes.headers['x-interceptor'] = `BK-${process.pid}`; 
     log('Response sent');
 };
 const onWebSocketRequest = (proxyRes, req, res) => {
