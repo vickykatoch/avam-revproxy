@@ -15,10 +15,10 @@ const onWebSocketRequest = (proxyRes, req, res) => {
     log('Websocket request');
 };
 
-const proxyOptions = (route, listenWebSocket)=> {
+const proxyOptions = (route)=> {
     return {
         target: route.address,
-        ws: listenWebSocket,
+        ws: route.allowWs,
         pathRewrite: resolveTargetAddress(route),
         onProxyReq: onRequestReceived,
         onProxyRes: onResponse,
