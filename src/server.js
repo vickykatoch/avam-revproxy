@@ -6,7 +6,7 @@ debugger;
 
 
 const buildProxy = (route) => {
-    return proxy(getProxyOptions(route,true));
+    return proxy(getProxyOptions(route));
 };
 
 
