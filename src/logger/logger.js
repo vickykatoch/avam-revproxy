@@ -7,6 +7,7 @@ const path = require('path');
 const fs = require('fs');
 const logDir = path.join(__dirname, '../../logs');
 const config = require('../config');
+require('winston-daily-rotate-file');
 
 if (!fs.existsSync(logDir)) {
     fs.mkdirSync(logDir);
@@ -14,6 +15,17 @@ if (!fs.existsSync(logDir)) {
 
 const logFileName = path.join(logDir, config.logfileName);
 
+const fileRotatetransport = new(transports.DailyRotateFile)({
+    filename: 'application-%DATE%.log',
+    datePattern: 'YYYY-MM-DD-HH',
+    zippedArchive: true,
+    maxSize: '50m',
+    maxFiles: '14d'
+});
+
+fileRotatetransport.on('rotate', function (oldFilename, newFilename) {
+    // do something fun
+});
 
 const options = {
     file: {
@@ -30,7 +42,7 @@ const options = {
         handleExceptions: true,
         json: false,
         colorize: true,
-    },
+    }
 };
 const messageFormatter = caller => format.combine(
     format.label({
@@ -51,7 +63,8 @@ const logger = (caller) => createLogger({
     format: messageFormatter(caller),
     transports: [
         new transports.Console(options.console),
-        new transports.File(options.file)
+        new transports.File(options.file),
+        fileRotatetransport
     ]
 });
 
