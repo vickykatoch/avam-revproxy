@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node ./src/index.js",
+    "start:dev": "node ./src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +22,7 @@
   "dependencies": {
     "express": "^4.16.4",
     "http-proxy-middleware": "^0.19.1",
+    "morgan": "^1.9.1",
     "winston": "^3.2.1"
   }
 }

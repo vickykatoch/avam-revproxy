@@ -1,8 +1,14 @@
 const app = require('express')();
+const morgan = require('morgan');
 const proxy = require('http-proxy-middleware');
 const config = require('./config');
 const getProxyOptions = require('./proxy-options');
-debugger;
+const logger = require('./logger/logger')(__filename);
+const expressLogger = {
+    write:  message => logger.info(message)
+};
+
+app.use(morgan('combined', { stream : expressLogger}));
 
 
 const buildProxy = (route) => {
@@ -12,8 +18,8 @@ const buildProxy = (route) => {
 
 config.routes.forEach(route => {
     app.use(route.route, buildProxy(route));
-    console.log(route);
+    logger.info(route);
 });
 app.listen(config.port, () => {
-    console.log(`Reverse Proxy Server listening on port : ${config.port}, Process: ${process.pid}`);
+    logger.info(`Reverse Proxy Server listening on port : ${config.port}, Process: ${process.pid}`);
 });

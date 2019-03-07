@@ -1,5 +1,7 @@
 module.exports = {
     port: 3000,
+    logLevel: 'debug',
+    logfileName: 'application.log',
     routes: [{
         route: '/app1',
         address: 'http://localhost:3001',
