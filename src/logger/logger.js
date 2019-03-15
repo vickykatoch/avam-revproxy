@@ -70,3 +70,4 @@ const logger = (caller) => createLogger({
 
 
 module.exports = logger;
+// https://thisdavej.com/using-winston-a-versatile-logging-library-for-node-js/

@@ -3,12 +3,18 @@ module.exports = {
     logLevel: 'debug',
     logfileName: 'application.log',
     routes: [{
-        route: '/app1',
-        address: 'http://localhost:3001',
-        allowWs: false
-    }, {
-        route: '/app2',
-        address: 'http://localhost:4200',
-        allowWs: true
-    }]
+            route: '/app1',
+            address: 'http://localhost:3001',
+            allowWs: false
+        }, {
+            route: '/app2',
+            address: 'http://localhost:4200',
+            allowWs: false
+        }, {
+            route: '/sockjs-node',
+            address: 'http://localhost:4200',
+            allowWs: true,
+            keepRoutePrefix: true
+        }
+    ]
 };
